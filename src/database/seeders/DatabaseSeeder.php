@@ -30,21 +30,6 @@ class DatabaseSeeder extends Seeder
         $languages = Language::all();
         $contents = Content::all();
 
-        // Hour::factory()->count(12)->create()->each(function ($hour) use ($languages, $contents) {
-        //     $hour->languages()->attach(
-        //         $languages->random(rand(1, 3))->pluck('id')->toArray(),
-        //         [
-        //             'language_hour' => rand(1, 3),
-        //         ]
-        //     );
-        //     $hour->contents()->attach(
-        //         $contents->random(rand(1, 3))->pluck('id')->toArray(),
-        //         [
-        //             'content_hour' => rand(1, 2),
-        //         ]
-        //     );
-        // });
-
         foreach (Hour::all() as $hour) {
             $hour->languages()->attach(
                 $languages->random(rand(1, 3))->pluck('id')->toArray(),
