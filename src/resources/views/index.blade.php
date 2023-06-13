@@ -209,9 +209,6 @@
 </body>
 <script>
 {
-
-  // const transpose = a => a[0].map((_, c) => a.map(r => r[c]));
-  // data = transpose(chart_data);
   let record_dates = @json($record_dates);  
   let record_hours = @json($record_hours);
   console.log(record_dates);
