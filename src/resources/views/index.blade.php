@@ -41,17 +41,17 @@
     <div class="main-inner">
       <div class="main-inner-date small outer">
         <h1>Today</h1>
-        <p class="main-inner-number">10</p>
+        <p class="main-inner-number">{{ $today_hour->hours }}</p>
         <p class="main-inner-hour">hour</p>
       </div>
       <div class="main-inner-month small outer">
         <h1>Month</h1>
-        <p class="main-inner-number">50</p>
+        <p class="main-inner-number">{{$month_hour->hours}}</p>
         <p class="main-inner-hour">hour</p>
       </div>
       <div class="main-inner-total small outer">
         <h1>Total</h1>
-        <p class="main-inner-number">100</p>
+        <p class="main-inner-number">{{$total_hour->hours}}</p>
         <p class="main-inner-hour">hour</p>
       </div>
       <div class="main-inner-graph graph outer">
@@ -207,25 +207,28 @@
 
   <footer></footer>
 </body>
-{{-- <script>
+<script>
 {
-  let chart_data = <?php echo $chart_data; ?>;
-  const transpose = a => a[0].map((_, c) => a.map(r => r[c]));
-  data = transpose(chart_data);
-  // console.log(data)
+
+  // const transpose = a => a[0].map((_, c) => a.map(r => r[c]));
+  // data = transpose(chart_data);
+  let record_dates = @json($record_dates);  
+  let record_hours = @json($record_hours);
+  console.log(record_dates);
+  console.log(record_hours);
   var ctx = document.getElementById('myChart1').getContext('2d');
 
   var blue_gradient = ctx.createLinearGradient(0, 0, 0, 500);
   blue_gradient.addColorStop(0, '#3CCFFF');
-  blue_gradient.addColorStop(1, '#0F72BD');
+  blue_gradient.addColorStop(1, '#0F72BD'); 
 
   var myGraphChart = new Chart(ctx, {
     type: 'bar',
     data: {
-      labels: data[0],
+      labels: record_dates,
       datasets: [{
         label: "学習時間",
-        data: data[1],
+        data: record_hours,
         backgroundColor: blue_gradient,
         barPercentage: 0.6,
         borderRadius: 5,
@@ -276,14 +279,14 @@
       }
     }
   });
-  let chart_languages = <?php echo $chart_languages; ?>;
-  let language_number = chart_languages.map(Number);
-  let $chart_contents = <?php echo $chart_contents; ?>;
-  let content_number = $chart_contents.map(Number);
+  let languages = @json($languages);
+  languages = languages.map(Number);
+  let contents = @json($contents);
+  contents = contents.map(Number);
   window.onload = function () {
     var data = [{
       // data: [30,20,10,5,5,20,20,10],
-      data: language_number,
+      data: languages,
 
       labels: ['HTML','CSS','JavaScript','PHP','Laravel','SQL','SHELL','その他'],
       backgroundColor: ['#0345EC','#0F72BD','#20BDDE','#3DCEFE','#B29EF3','#6D46EC','#4A18EF','#3105C0'],
@@ -328,7 +331,7 @@
 
     var data = [{
       
-      data: content_number,
+      data: contents,
       labels: ['N予備校', 'ドットインストール', '課題'],
       backgroundColor: ['#0345EC', '#0F72BD', '#20BDDE'],
       borderColor: "#fff"
@@ -371,7 +374,7 @@
     });
   }
 }
-</script> --}}
+</script>
 
 
 

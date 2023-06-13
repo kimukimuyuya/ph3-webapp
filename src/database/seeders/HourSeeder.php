@@ -64,6 +64,14 @@ class HourSeeder extends Seeder
             'date' => '2023-06-12',
             'hours' => '4',
         ],
+        [
+            'date' => '2023-06-13',
+            'hours' => '5',
+        ],
+        [
+            'date' => '2023-06-14',
+            'hours' => '6',
+        ]
     ]);
     }
 }
