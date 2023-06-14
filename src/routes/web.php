@@ -21,10 +21,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('tailwind', function () {
-    return view('tailwind');
-});
-
 Route::get('/webapp', [HourController::class, 'getData'])->middleware(['auth', 'verified'])->name('webapp');
 
 Route::resource('records', RecordController::class, ['only' => ['store']])->middleware(['auth', 'verified']);
