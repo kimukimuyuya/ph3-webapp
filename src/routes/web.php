@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\HourController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\RecordController;
 use Illuminate\Support\Facades\Route;
 use App\Models\Hour;
 
@@ -20,11 +21,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// Route::get('/webapp', function () {
-//     return view('index');
-// })->middleware(['auth', 'verified'])->name('webapp');
-
 Route::get('/webapp', [HourController::class, 'getData'])->middleware(['auth', 'verified'])->name('webapp');
+
+Route::resource('records', RecordController::class, ['only' => ['store']])->middleware(['auth', 'verified']);
 
 Route::get('/dashboard', function () {
     return view('dashboard');

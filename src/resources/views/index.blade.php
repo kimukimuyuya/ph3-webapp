@@ -22,8 +22,6 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
   <link rel="stylesheet" href="{{asset('css/reset.css')}}">
   <link rel="stylesheet" href="{{asset('css/style.css')}}">
-  
-  
 </head>
 
 <body>
@@ -94,7 +92,8 @@
       <div class="main-modal-close-outer" id="modalClose">
         <span class="main-modal-close"></span>
       </div>
-      <form action="#" method="post" id="mainForm">
+      <form action="{{ route('records.store') }}" method="POST" id="mainForm">
+        @csrf
         <div class="main-modal-wrapper">
           <div class="main-modal-left">
             <div>
@@ -103,37 +102,37 @@
             </div>
             <div class="main-modal-content">
               <h2>学習コンテンツ（複数選択可）</h2>
-              <input type="checkbox" id="01-A" name="content">
+              <input type="checkbox" id="01-A" name="contents[]" value="1">
               <label for="01-A" class="modal-checkbox">N予備校</label>
-              <input type="checkbox" id="01-B" name="content">
+              <input type="checkbox" id="01-B" name="contents[]" value="2">
               <label for="01-B" class="modal-checkbox">ドットインストール</label>
-              <input type="checkbox" id="01-C" name="content">
+              <input type="checkbox" id="01-C" name="contents[]" value="3">
               <label for="01-C" class="modal-checkbox">POSSE課題</label>
             </div>
             <div class="main-modal-lang">
               <h2>学習言語（複数選択可）</h2>
-              <input type="checkbox" id="02-A" name="lang">
+              <input type="checkbox" id="02-A" name="languages[]" value="1">
               <label for="02-A" class="modal-checkbox">HTML</label>
-              <input type="checkbox" id="02-B" name="lang">
+              <input type="checkbox" id="02-B" name="languages[]" value="2">
               <label for="02-B" class="modal-checkbox">CSS</label>
-              <input type="checkbox" id="02-C" name="lang">
-              <label for="02-C" class="modal-checkbox"><input type="checkbox" name="lang">JavaScript</label>
-              <input type="checkbox" id="02-D" name="lang">
+              <input type="checkbox" id="02-C" name="languages[]" value="3">
+              <label for="02-C" class="modal-checkbox">JavaScript</label>
+              <input type="checkbox" id="02-D" name="languages[]" value="4">
               <label for="02-D" class="modal-checkbox">PHP</label>
-              <input type="checkbox" id="02-E" name="lang">
+              <input type="checkbox" id="02-E" name="languages[]" value="5">
               <label for="02-E" class="modal-checkbox">Laravel</label>
-              <input type="checkbox" id="02-F" name="lang">
+              <input type="checkbox" id="02-F" name="languages[]" value="6">
               <label for="02-F" class="modal-checkbox">SQL</label>
-              <input type="checkbox" id="02-G" name="lang">
+              <input type="checkbox" id="02-G" name="languages[]" value="7">
               <label for="02-G" class="modal-checkbox">SHELL</label>
-              <input type="checkbox" id="02-H" name="lang">
+              <input type="checkbox" id="02-H" name="languages[]" value="8">
               <label for="02-H" class="modal-checkbox">情報システム基礎知識（その他）</label>
             </div>
           </div>
           <div class="main-modal-right">
             <div>
               <h2>学習時間</h2>
-              <input type="text" name="time">
+              <input type="text" name="hours" placeholder="数字のみ入力してください">
             </div>
             <div>
               <h2>Twitter用コメント</h2>
@@ -147,7 +146,7 @@
           </div>
         </div>
         <div class="main-modal-button-outer">
-          <button type="button" class="main-modal-button" id="mainModalButton">記録・投稿</button>
+          <button type="submit" class="main-modal-button" id="mainModalButton">記録・投稿</button>
         </div>
       </form>
 
